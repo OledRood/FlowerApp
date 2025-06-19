@@ -1,0 +1,8 @@
+<project version="4">
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="e2c3003a-59f7-4e7d-9863-8b20e575ff6d" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
