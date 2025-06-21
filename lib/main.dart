@@ -1,30 +1,29 @@
 import 'package:flowers_app/test/view/home_page.dart';
-import 'package:flowers_app/theme/dark_theme.dart';
+import 'package:flowers_app/ui/theme/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'home/view/home_page.dart';
-import 'notification/notification.dart';
+import 'core/navigation/app_router_factory.dart';
+import 'core/navigation/navigation_di.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
   MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appNavigator = ref.watch(NavigationDi.appNavigator);
+
+    return MaterialApp.router(
       theme: darkTheme,
       themeMode: ThemeMode.dark,
-      navigatorObservers: [routeObserver], // Добавляем RouteObserver
-    // home: TestPage(),
-      home: HomePage(),
+      routerConfig: appNavigator.routerConfig,
     );
   }
 }

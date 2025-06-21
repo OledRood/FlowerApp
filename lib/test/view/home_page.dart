@@ -7,7 +7,7 @@
 // import 'package:flutter_bloc/flutter_bloc.dart';
 //
 // import '../../add_flower/view/add_flower_page.dart';
-// import '../../models/flower_model.dart';
+// import '../../core/flower_model.dart';
 // import '../../resources/app_colors.dart';
 // import '../../resources/app_images.dart';
 // import '../bloc/test_bloc.dart';

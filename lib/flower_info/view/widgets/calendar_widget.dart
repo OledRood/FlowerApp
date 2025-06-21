@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../resources/app_colors.dart';
+import '../../../ui/theme/dark_theme.dart';
 import '../../bloc/flower_info_bloc.dart';
 
 

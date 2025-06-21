@@ -9,8 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../home/view/home_page.dart';
-import '../../resources/app_colors.dart';
+import '../../ui/theme/dark_theme.dart';
 import '../bloc/add_flower_bloc.dart';
 
 class AddFlowerPage extends StatelessWidget {

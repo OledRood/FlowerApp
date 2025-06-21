@@ -6,9 +6,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../models/flower_model.dart';
-import '../../storage/database.dart';
-import '../../storage/file_save.dart';
+import '../../core/flower_model.dart';
+import '../../core/storage/database.dart';
+import '../../core/storage/file_save.dart';
 
 part 'add_flower_event.dart';
 

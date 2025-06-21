@@ -16,7 +16,4 @@ extension ThemeStyleExtension on ThemeData{
   TextStyle get label => textTheme.labelMedium!;
   TextStyle get title => textTheme.titleLarge!;
   TextStyle get textButtonWithoutBackground => textTheme.labelSmall!;
-
-
-
 }

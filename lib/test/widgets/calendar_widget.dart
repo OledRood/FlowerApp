@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../flower_info/bloc/flower_info_bloc.dart';
-import '../../resources/app_colors.dart';
+import '../../ui/theme/dark_theme.dart';
 
 class CalendarWidget extends StatefulWidget {
   final List<DateTime> wateringDates;

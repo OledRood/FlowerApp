@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:path/path.dart';
 
-import '../../models/flower_model.dart';
-import '../../storage/database.dart';
+import '../../core/storage/database.dart';
 
 part 'test_event.dart';
 

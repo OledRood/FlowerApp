@@ -2,15 +2,14 @@ import 'dart:io';
 
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flowers_app/extension/theme_extension.dart';
-import 'package:flowers_app/models/flower_model.dart';
-import 'package:flowers_app/models/saving_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../resources/app_colors.dart';
+import '../../core/flower_model.dart';
 import '../../resources/app_images.dart';
 import '../../test/widgets/calendar_widget.dart';
+import '../../ui/theme/dark_theme.dart';
 import '../bloc/flower_info_bloc.dart';
 
 class FlowerInfoPage extends StatelessWidget {

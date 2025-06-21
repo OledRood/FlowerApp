@@ -3,11 +3,11 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flowers_app/models/saving_status.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../models/flower_model.dart';
-import '../../storage/database.dart';
+import '../../core/flower_model.dart';
+import '../../core/saving_status.dart';
+import '../../core/storage/database.dart';
 
 part 'flower_info_event.dart';
 
