@@ -1,49 +1,50 @@
-import 'dart:io';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'convert_watering_date.dart';
 import 'declension_date_word.dart';
 
+part 'flower_model.freezed.dart';
 
+@freezed
+sealed class Flower with _$Flower {
+  const factory Flower({
+    required String name,
+    required String plantDate,
+    required String photoPath,
+    required String id,
+    required List<DateTime> wateringDates,
+    required String description,
+  }) = _Flower;
 
-class Flower {
-  final String id;
-  final String name;
-  final String plantDate;
-  final String description;
-  final List<DateTime> wateringDates;
-
-  // final File photo;
-  final String photoPath;
-
-  Flower({
-    required this.name,
-    required this.plantDate,
-    // required this.wateringDate,
-    // required this.photo,
-    required this.photoPath,
-    required this.id,
-    required this.wateringDates,
-    required this.description,
-  });
-
-  // Преобразование объекта User в Map
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      "name": name,
-      "plantDate": plantDate,
-      "photoPath": photoPath,
-      "description": description,
-      "wateringDates": ConvertWateringDate.wateringDatesToString(wateringDates),
-    };
+  // Преобразование Map в объект User
+  factory Flower.fromMap(Map<String, dynamic> map) {
+    return Flower(
+      name: map["name"],
+      plantDate: map["plantDate"],
+      photoPath: map["photoPath"],
+      id: map['id'],
+      description: map['description'],
+      wateringDates: ConvertWateringDate.wateringDatesToList(
+        map["wateringDates"],
+      ),
+    );
   }
+}
 
+extension FlowerX on Flower {
   String get flowerAge {
-    List<int> plantDateList =
-        plantDate.substring(0, 10).split('-').map(int.parse).toList();
+    List<int> plantDateList = plantDate
+        .substring(0, 10)
+        .split('-')
+        .map(int.parse)
+        .toList();
     DateTime today = DateTime.now();
-    DateTime plantDateTime =
-        DateTime(plantDateList[0], plantDateList[1], plantDateList[2]);
+    DateTime plantDateTime = DateTime(
+      plantDateList[0],
+      plantDateList[1],
+      plantDateList[2],
+    );
 
     if (today.isBefore(plantDateTime)) {
       return 'Не взошел';
@@ -73,7 +74,6 @@ class Flower {
     } else if (days == 0 && months == 0 && years == 5) {
       return "Первый юбилей!";
     } else if (months < 2 && years == 0) {
-
       return DeclensionDateWord.daysName(days);
     } else if (months >= 2 && years == 0) {
       return DeclensionDateWord.monthName(months);
@@ -83,8 +83,7 @@ class Flower {
     return '${DeclensionDateWord.daysName(days)}, ${DeclensionDateWord.monthName(months)}, ${DeclensionDateWord.yearName(years)}';
   }
 
-
-bool get isWateringToday{
+  bool get isWateringToday {
     final today = DateTime.now();
     final normalizedToday = DateTime(today.year, today.month, today.day);
 
@@ -94,25 +93,19 @@ bool get isWateringToday{
 
     // Проверяем, содержится ли сегодняшняя дата в списке
     return normalizedWateringDates.contains(normalizedToday);
-
-}
-
-  // Преобразование Map в объект User
-  factory Flower.fromMap(Map<String, dynamic> map) {
-    return Flower(
-        name: map["name"],
-        plantDate: map["plantDate"],
-        // wateringDate: map["wateringDate"],
-        // photo: map["photo"],
-        photoPath: map["photoPath"],
-        id: map['id'],
-        description: map['description'],
-        wateringDates:
-            ConvertWateringDate.wateringDatesToList(map["wateringDates"]));
   }
 
-  @override
-  String toString() {
-    return 'Flower{id: $id, name: $name, plantDate: $plantDate, description: $description, wateringDates: $wateringDates, photoPath: $photoPath}';
+  // Преобразование объекта Flower в Map
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      "name": name,
+      "plantDate": plantDate,
+      "photoPath": photoPath,
+      "description": description,
+      "wateringDates": ConvertWateringDate.wateringDatesToString(wateringDates),
+    };
   }
+
+
 }

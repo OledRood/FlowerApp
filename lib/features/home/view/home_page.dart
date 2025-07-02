@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flowers_app/extension/theme_extension.dart';
-import 'package:flowers_app/flower_info/view/flower_info_page.dart';
 import 'package:flowers_app/ui/yellow_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +14,19 @@ import '../../../resources/app_images.dart';
 
 import '../../../ui/theme/dark_theme.dart';
 import '../homeDI.dart';
+
+class HomePageWithRefresh extends ConsumerWidget {
+  const HomePageWithRefresh({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.read(HomeDi.homeViewModel.notifier).getFlowerList();
+    return HomePage();
+  }
+}
+
+
+
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});

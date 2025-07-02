@@ -1,8 +1,8 @@
-import 'package:flowers_app/test/view/home_page.dart';
 import 'package:flowers_app/ui/theme/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'core/message/message_di.dart';
 import 'core/navigation/app_router_factory.dart';
 import 'core/navigation/navigation_di.dart';
 
@@ -19,11 +19,14 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appNavigator = ref.watch(NavigationDi.appNavigator);
+    final scaffoldManager = ref.watch(MessageDi.scaffoldMessengerManager);
 
     return MaterialApp.router(
       theme: darkTheme,
       themeMode: ThemeMode.dark,
       routerConfig: appNavigator.routerConfig,
+      scaffoldMessengerKey: scaffoldManager.scaffoldMessengerKey,
+
     );
   }
 }

@@ -15,3 +15,5 @@ enum AppRoutes {
     values.map((e) => MapEntry(e.path, e)),
   );
 }
+
+

@@ -1,7 +1,7 @@
-import 'package:flowers_app/flower_info/view/flower_info_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../add_flower/view/add_flower_page.dart';
+import '../../features/flower_info/view/flower_info_page.dart';
 import '../../features/home/view/home_page.dart';
 import 'app_routes.dart';
 
@@ -12,7 +12,7 @@ class AppRouterFactory {
       routes: [
         GoRoute(
           path: AppRoutes.home.path,
-          builder: (context, state) => const HomePage(),
+          builder: (context, state) => const HomePageWithRefresh(),
         ),
         //Здесь надо заменить на реальный flowerId
         GoRoute(
@@ -22,6 +22,7 @@ class AppRouterFactory {
             return FlowerInfoPage(flowerId: flowerId!);
           },
         ),
+
         GoRoute(
           path: AppRoutes.addFlower.path,
           builder: (context, state) => const AddFlowerPage(),

@@ -15,7 +15,7 @@ class HomeViewModel extends StateNotifier<HomeState> {
 
   Future getFlowerList() async {
     List<Flower> flowerList = await dbHelper.getFlowers();
-    print(flowerList);
+    if (!mounted) return;
     state = state.copyWith(flowerList: flowerList);
   }
 

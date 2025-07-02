@@ -16,12 +16,18 @@ class AppNavigator {
     _goRouter.go(AppRoutes.home.path);
   }
 
-  void flowerInfo(String flowerId){
-    _goRouter.push(AppRoutes.flowerInfo.path.replaceFirst(':flowerId', flowerId));
+  Future<bool?> flowerInfo(String flowerId) {
+    return _goRouter.push<bool>(
+      AppRoutes.flowerInfo.path.replaceFirst(':flowerId', flowerId),
+    );
   }
 
-  void addFlower(){
+
+  void addFlower() {
     _goRouter.push(AppRoutes.addFlower.path);
+  }
+  void back(){
+    _goRouter.pop();
   }
 
 

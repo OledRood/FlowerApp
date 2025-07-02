@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/theme/dark_theme.dart';
+
 extension ThemeExtension on BuildContext{
   ThemeData get theme =>  Theme.of(this);
 }
@@ -16,4 +18,5 @@ extension ThemeStyleExtension on ThemeData{
   TextStyle get label => textTheme.labelMedium!;
   TextStyle get title => textTheme.titleLarge!;
   TextStyle get textButtonWithoutBackground => textTheme.labelSmall!;
+  TextStyle get unActiveTextButton => textTheme.labelSmall!.copyWith(color: AppColors.greyContainer);
 }
