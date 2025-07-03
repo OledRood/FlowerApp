@@ -79,6 +79,13 @@ class _HomePageContent extends ConsumerWidget {
                       'Ваши растения',
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
+                    IconButton(
+                      icon: Icon(Icons.refresh, size: 30),
+                      
+                      onPressed: () => {
+                        viewModel.getFlowerList(),
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 40),
@@ -160,6 +167,7 @@ class _FlowerContainerWidget extends ConsumerWidget {
               child: SizedBox(
                 width: 80,
                 height: 90,
+                
                 // child: Icon(Icons.water_drop_outlined, size: 30,),
                 child: flower.isWateringToday
                     ? Icon(Icons.water_drop, size: 30)

@@ -13,26 +13,45 @@ class HomeViewModel extends StateNotifier<HomeState> {
     getFlowerList();
   }
 
-  Future getFlowerList() async {
+  Future<void> getFlowerList() async {
     List<Flower> flowerList = await dbHelper.getFlowers();
     if (!mounted) return;
     state = state.copyWith(flowerList: flowerList);
   }
 
-  Future wateringFlower(flowerId) async {
+  Future<void> wateringFlower(String flowerId) async {
     if (state.isLoading) return;
     try {
       state = state.copyWith(isLoading: true);
       final Flower flower = await dbHelper.getFlowerById(flowerId);
       final todayIndexInWateringList = _checkIndexTodayWatering(flower);
+      
+      Flower updatedFlower;
       if (todayIndexInWateringList == -1) {
-        flower.wateringDates.add(DateTime.now());
+        // Добавляем сегодняшнюю дату полива
+        final updatedWateringDates = [...flower.wateringDates, DateTime.now()];
+        updatedFlower = flower.copyWith(wateringDates: updatedWateringDates);
       } else {
-        flower.wateringDates.removeAt(todayIndexInWateringList);
+        // Удаляем сегодняшнюю дату полива
+        final updatedWateringDates = [...flower.wateringDates];
+        updatedWateringDates.removeAt(todayIndexInWateringList);
+        updatedFlower = flower.copyWith(wateringDates: updatedWateringDates);
       }
-      dbHelper.updateFlower(flower: flower);
-      List<Flower> flowerList = await getFlowerList();
-      state = state.copyWith(flowerList: flowerList, isLoading: false);
+      
+      // Ожидаем обновления в базе данных
+      await dbHelper.updateFlower(flower: updatedFlower);
+      
+      // Обновляем локальное состояние более эффективно
+      final currentFlowers = [...state.flowerList];
+      final flowerIndex = currentFlowers.indexWhere((f) => f.id == flowerId);
+      if (flowerIndex != -1) {
+        currentFlowers[flowerIndex] = updatedFlower;
+        state = state.copyWith(flowerList: currentFlowers, isLoading: false);
+      } else {
+        // Если цветок не найден в текущем списке, перезагружаем весь список
+        await getFlowerList();
+        state = state.copyWith(isLoading: false);
+      }
     } catch (e) {
       state = state.copyWith(errorMessage: e.toString(), isLoading: false);
     }

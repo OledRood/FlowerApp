@@ -112,29 +112,10 @@ class DatabaseHelper {
     );
   }
 
-  // Удаление цветка
+
   Future<int> deleteFlower(String id) async {
     final db = await database;
-
-    print('Deleted');
     return await db.delete(table, where: 'id = ?', whereArgs: [id]);
   }
 
-  // Map<String, dynamic> toMap() {
-  //   return {
-  //     'id': id,
-  //     'dates': dates.map((date) => date.toIso8601String()).toList().join(','),
-  //   };
-  // }
-  //
-  // // Преобразование Map в объект
-  // factory WateringDates.fromMap(Map<String, dynamic> map) {
-  //   return WateringDates(
-  //     id: map['id'],
-  //     dates: (map['dates'] as String)
-  //         .split(',')
-  //         .map((date) => DateTime.parse(date))
-  //         .toList(),
-  //   );
-  // }
 }

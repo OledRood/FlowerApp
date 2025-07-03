@@ -1,0 +1,138 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# iOS/macOS
+**/ios/Pods/
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/macos/Pods/
+**/macos/Runner/GeneratedPluginRegistrant.*
+
+# Windows
+**/windows/flutter/generated_plugin_registrant.cc
+**/windows/flutter/generated_plugin_registrant.h
+
+# Linux
+**/linux/flutter/generated_plugin_registrant.cc
+**/linux/flutter/generated_plugin_registrant.h
+
+# Web
+lib/generated_plugin_registrant.dart
+
+# Coverage
+coverage/
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Database files (if you don't want to include local SQLite databases)
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE specific files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/extensions.json
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+logs/
+*.log
+
+# Cache directories
+.cache/
+
+# Generated files that shouldn't be in version control
+**/generated/
+**/*.g.dart
+**/*.freezed.dart
+**/*.config.dart
+
+# Build artifacts
+build/
+dist/
+
+# Flutter specific
+.metadata
+.flutter-plugins-dependencies
+.packages
+#pubspec.lock
+
+# Platform specific build directories
+android/app/build/
+android/build/
+ios/build/
+macos/build/
+windows/build/
+linux/build/
+web/build/
+
+# Certificate files
+*.p12
+*.key
+*.crt
+*.pem
+
+# API keys and secrets
+secrets.dart
+config/secrets.dart
+lib/secrets.dart
+
+# Test coverage
+coverage/
+lcov.info
+
+# Crashlytics
+**/ios/ServiceDefinitions.json
+**/macos/ServiceDefinitions.json
