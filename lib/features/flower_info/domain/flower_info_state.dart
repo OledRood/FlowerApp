@@ -14,7 +14,6 @@ sealed class FlowerInfoState with _$FlowerInfoState {
   const factory FlowerInfoState({
     String? flowerId,
     String? photoPath,
-    String? plantDate,
     List<DateTime>? wateringDates,
     @Default(true) bool isLoading,
     String? errorMessage,
@@ -27,7 +26,6 @@ sealed class FlowerInfoState with _$FlowerInfoState {
   factory FlowerInfoState.initial() => const FlowerInfoState(
     flowerId: null,
     photoPath: null,
-    plantDate: null,
     wateringDates: null,
     isLoading: false,
     errorMessage: null,

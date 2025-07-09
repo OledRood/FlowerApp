@@ -1,3 +1,4 @@
+import 'package:flowers_app/core/storage/database.dart';
 import 'package:flowers_app/ui/theme/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,6 +21,8 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appNavigator = ref.watch(NavigationDi.appNavigator);
     final scaffoldManager = ref.watch(MessageDi.scaffoldMessengerManager);
+
+
 
     return MaterialApp.router(
       theme: darkTheme,

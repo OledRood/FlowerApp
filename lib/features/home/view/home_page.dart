@@ -1,18 +1,13 @@
 import 'dart:io';
 
 import 'package:flowers_app/extension/theme_extension.dart';
+import 'package:flowers_app/ui/theme/dark_theme.dart';
 import 'package:flowers_app/ui/yellow_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../add_flower/view/add_flower_page.dart';
 import '../../../core/flower_model.dart';
-import '../../../notification/notification.dart';
 import '../../../resources/app_images.dart';
-
-import '../../../ui/theme/dark_theme.dart';
 import '../homeDI.dart';
 
 class HomePageWithRefresh extends ConsumerWidget {
@@ -130,8 +125,8 @@ class _FlowerContainerWidget extends ConsumerWidget {
     return GestureDetector(
       onTap: () => viewModel.goToFlowerInfo(flower.id),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 0),
-        padding: EdgeInsets.all(5),
+        margin: const EdgeInsets.symmetric(horizontal: 0),
+        padding: const EdgeInsets.all(5),
         height: 100,
         decoration: BoxDecoration(
           color: AppColors.greyContainer,
@@ -141,7 +136,7 @@ class _FlowerContainerWidget extends ConsumerWidget {
         child: Row(
           children: [
             _ImageWidget(flowerPhotoPath: flower.photoPath),
-            Expanded(child: SizedBox()),
+            const Expanded(child: SizedBox()),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
@@ -152,7 +147,7 @@ class _FlowerContainerWidget extends ConsumerWidget {
                   //   'Дата полива: ${convertDate(widget.flower.wateringDates)}',
                   //   style: context.theme.date,
                   // ),
-                  Text('${flower.flowerAge}', style: context.theme.date),
+                  Text(flower.flowerAge, style: context.theme.date),
                 ],
               ),
             ),
@@ -170,8 +165,8 @@ class _FlowerContainerWidget extends ConsumerWidget {
                 
                 // child: Icon(Icons.water_drop_outlined, size: 30,),
                 child: flower.isWateringToday
-                    ? Icon(Icons.water_drop, size: 30)
-                    : Icon(Icons.water_drop_outlined, size: 30),
+                    ? const Icon(Icons.water_drop, size: 30)
+                    : const Icon(Icons.water_drop_outlined, size: 30),
               ),
             ),
           ],
@@ -185,6 +180,7 @@ class _FlowerContainerWidget extends ConsumerWidget {
       return 'Отсутствует';
     }
     List dateList = date.toString().substring(1, 11).split('-');
+
     return dateList[2] + "." + dateList[1] + "." + dateList[0];
   }
 }

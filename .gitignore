@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -107,7 +109,7 @@ dist/
 .metadata
 .flutter-plugins-dependencies
 .packages
-#pubspec.lock
+pubspec.lock
 
 # Platform specific build directories
 android/app/build/

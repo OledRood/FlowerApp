@@ -36,7 +36,6 @@ class FlowerInfoViewModel extends StateNotifier<FlowerInfoState> {
       controllerOfDescription.text = flower.description;
       state = state.copyWith(
         photoPath: flower.photoPath,
-        plantDate: flower.plantDate,
         wateringDates: flower.wateringDates,
         flowerId: flowerId,
         isLoading: false,
@@ -50,12 +49,12 @@ class FlowerInfoViewModel extends StateNotifier<FlowerInfoState> {
     state = state.copyWith(photoPath: photo.path, saveStatus: SaveStatus.ready);
   }
 
-  void addPlantData(String newPlantDate) {
-    state = state.copyWith(
-      plantDate: newPlantDate,
-      saveStatus: SaveStatus.ready,
-    );
-  }
+  // void addPlantData(String newPlantDate) {
+  //   state = state.copyWith(
+  //     plantDate: newPlantDate,
+  //     saveStatus: SaveStatus.ready,
+  //   );
+  // }
 
   void addDateWatering(List<DateTime> newWateringDates) async {
     state = state.copyWith(

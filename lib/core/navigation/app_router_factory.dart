@@ -1,6 +1,6 @@
+import 'package:flowers_app/features/add_flower/view/add_flower_page.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../add_flower/view/add_flower_page.dart';
 import '../../features/flower_info/view/flower_info_page.dart';
 import '../../features/home/view/home_page.dart';
 import 'app_routes.dart';

@@ -15,8 +15,9 @@ import '../models/flower_info_view_model.dart';
 class FlowerInfoPage extends ConsumerWidget {
   final String flowerId;
 
-  FlowerInfoPage({super.key, required this.flowerId});
+  const FlowerInfoPage({super.key, required this.flowerId});
 
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     final flowerInfoState = ref.watch(
       FlowerInfoDi.flowerInfoViewModelProvider(flowerId),
@@ -28,16 +29,15 @@ class FlowerInfoPage extends ConsumerWidget {
     final saveStatus = flowerInfoState.saveStatus;
 
     if (saveStatus == SaveStatus.saved) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(
-          child: Icon(Icons.check, color: AppColors.primaryYellow, size: 34,),
+          child: Icon(Icons.check, color: AppColors.primaryYellow, size: 34),
         ),
       );
     } else if (flowerInfoState.isLoading ||
         flowerPhotoPath == null ||
-        flowerInfoState.wateringDates == null ||
-        flowerInfoState.plantDate == null) {
-      return Center(child: CircularProgressIndicator());
+        flowerInfoState.wateringDates == null) {
+      return const Center(child: CircularProgressIndicator());
     }
 
     return SafeArea(
@@ -48,20 +48,20 @@ class FlowerInfoPage extends ConsumerWidget {
               children: [
                 Column(
                   children: [
-                    SizedBox(height: 60),
+                    const SizedBox(height: 60),
                     Row(
                       children: [
                         _ImagePickerWidget(
-                          photo: File(flowerPhotoPath!),
+                          photo: File(flowerPhotoPath),
                           viewModel: viewModel,
                         ),
-                        Expanded(child: SizedBox()),
+                        const Expanded(child: SizedBox()),
                         _NameFieldWidget(
                           controllerOfName: viewModel.controllerOfName,
                           changeSaveStatusToReady: () =>
                               viewModel.changeSaveStatusToReady(),
                         ),
-                        Expanded(child: SizedBox()),
+                        const Expanded(child: SizedBox()),
                       ],
                     ),
                     const SizedBox(height: 30),
@@ -115,8 +115,8 @@ class _AppBarWidget extends ConsumerWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          BackButton(),
-          Spacer(),
+          const BackButton(),
+          const Spacer(),
           GestureDetector(
             onTap: saveTap,
             child: Center(
@@ -128,7 +128,7 @@ class _AppBarWidget extends ConsumerWidget {
               ),
             ),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
         ],
       ),
     );
@@ -147,7 +147,7 @@ class _WateringCalendarWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Даты поливов', style: context.theme.title),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         CalendarWidget(flowerId: flowerId),
       ],
     );
@@ -199,16 +199,16 @@ class _ImagePickerWidgetState extends State<_ImagePickerWidget> {
           child: Wrap(
             children: <Widget>[
               ListTile(
-                leading: Icon(Icons.photo_library),
-                title: Text('Галерея'),
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Галерея'),
                 onTap: () {
                   _pickImage(ImageSource.gallery, context);
                   Navigator.of(context).pop();
                 },
               ),
               ListTile(
-                leading: Icon(Icons.camera_alt),
-                title: Text('Камера'),
+                leading: const Icon(Icons.camera_alt),
+                title: const Text('Камера'),
                 onTap: () {
                   _pickImage(ImageSource.camera, context);
                   Navigator.of(context).pop();
@@ -378,7 +378,7 @@ class _DatePlantFieldWidget extends StatelessWidget {
             cursorColor: AppColors.primaryYellow,
             // dateLabelText: 'Выберите дату',
             // locale: Locale('ru'), // Русский язык
-            decoration: InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(border: InputBorder.none),
           ),
         ),
       ],

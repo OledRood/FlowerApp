@@ -34,6 +34,7 @@ sealed class Flower with _$Flower {
 
 extension FlowerX on Flower {
   String get flowerAge {
+    print(id);
     List<int> plantDateList = plantDate
         .substring(0, 10)
         .split('-')
